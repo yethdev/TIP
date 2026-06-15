@@ -1,0 +1,7 @@
+<svg width="148" height="40" viewBox="0 0 148 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIP">
+  <rect width="40" height="40" rx="10" fill="#1f7a4d"/>
+  <rect x="9" y="22" width="5.5" height="9" rx="2.2" fill="#ffffff" fill-opacity="0.72"/>
+  <rect x="17.25" y="16" width="5.5" height="15" rx="2.2" fill="#ffffff" fill-opacity="0.86"/>
+  <rect x="25.5" y="9" width="5.5" height="22" rx="2.2" fill="#ffffff"/>
+  <text x="54" y="28" font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="1" fill="#16181d">TIP</text>
+</svg>

@@ -1,0 +1,9 @@
+dist
+coverage
+node_modules
+resources
+package-lock.json
+
+# authored + license-protected text, kept verbatim
+README.md
+LICENSE.md

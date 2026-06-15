@@ -1,0 +1,26 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIP - The Token Improvement Plan">
+  <rect width="1200" height="630" fill="#faf9f5"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#1f7a4d"/>
+
+  <g transform="translate(88, 96)">
+    <rect width="72" height="72" rx="18" fill="#1f7a4d"/>
+    <rect x="16" y="40" width="10" height="16" rx="4" fill="#ffffff" fill-opacity="0.72"/>
+    <rect x="31" y="29" width="10" height="27" rx="4" fill="#ffffff" fill-opacity="0.86"/>
+    <rect x="46" y="16" width="10" height="40" rx="4" fill="#ffffff"/>
+    <text x="96" y="50" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif" font-size="40" font-weight="700" letter-spacing="2" fill="#16181d">TIP</text>
+  </g>
+
+  <text x="88" y="300" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif" font-size="78" font-weight="700" fill="#16181d">The Token</text>
+  <text x="88" y="390" font-family="'Space Grotesk','Segoe UI',system-ui,sans-serif" font-size="78" font-weight="700" fill="#16181d">Improvement Plan</text>
+
+  <text x="90" y="452" font-family="'Inter','Segoe UI',system-ui,sans-serif" font-size="30" fill="#565d66">Infrastructure for increasing token usage in your workflows.</text>
+
+  <text x="90" y="556" font-family="'Inter','Segoe UI',system-ui,sans-serif" font-size="22" font-weight="500" fill="#1f7a4d">Organizational goal: one trillion tokens.</text>
+
+  <g transform="translate(900, 150)" opacity="0.9">
+    <rect x="0"   y="220" width="34" height="100" rx="8" fill="#1f7a4d" fill-opacity="0.25"/>
+    <rect x="52"  y="160" width="34" height="160" rx="8" fill="#1f7a4d" fill-opacity="0.45"/>
+    <rect x="104" y="92"  width="34" height="228" rx="8" fill="#1f7a4d" fill-opacity="0.7"/>
+    <rect x="156" y="20"  width="34" height="300" rx="8" fill="#1f7a4d"/>
+  </g>
+</svg>

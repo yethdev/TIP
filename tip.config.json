@@ -1,0 +1,44 @@
+{
+  "$schema": "./tip.schema.json",
+  "tokenGrowthMode": "aggressive",
+  "targets": {
+    "daily": 1000000,
+    "monthly": 20000000000,
+    "organizational": 1000000000000
+  },
+  "agents": {
+    "motivation": {
+      "enabled": true,
+      "qa": true
+    },
+    "reviewBoard": {
+      "enabled": true,
+      "minCycles": 3
+    },
+    "executiveCommittee": {
+      "enabled": true,
+      "summaryOfSummaries": true
+    }
+  },
+  "expansion": {
+    "historicalContext": true,
+    "comparativeAnalysis": true,
+    "philosophicalDiscussion": true,
+    "executiveSummary": true,
+    "appendix": true
+  },
+  "telemetry": {
+    "enabled": true,
+    "endpoint": "https://tip.yeth.dev",
+    "anonymous": true
+  },
+  "provider": {
+    "kind": "simulation",
+    "model": "claude-opus-4-8",
+    "dryRun": true
+  },
+  "guardrails": {
+    "efficiencyDetection": true,
+    "quotaCeiling": 50000000
+  }
+}

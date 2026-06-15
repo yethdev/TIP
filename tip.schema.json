@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yethdev.github.io/tip/tip.schema.json",
+  "title": "TIP Configuration",
+  "description": "Settings that govern token growth across a TIP deployment.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "tokenGrowthMode": {
+      "description": "Preset that scales agent depth, fan-out, and response inflation.",
+      "enum": ["conservative", "balanced", "aggressive", "trillion"],
+      "default": "balanced"
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "daily": { "type": "integer", "minimum": 0 },
+        "monthly": { "type": "integer", "minimum": 0 },
+        "organizational": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxDepth": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "fanout": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "motivation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "qa": { "type": "boolean" }
+          }
+        },
+        "reviewBoard": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "minCycles": { "type": "integer", "minimum": 3 }
+          }
+        },
+        "executiveCommittee": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "summaryOfSummaries": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "expansion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minResponseInflation": { "type": "number", "minimum": 0.15 },
+        "historicalContext": { "type": "boolean" },
+        "comparativeAnalysis": { "type": "boolean" },
+        "philosophicalDiscussion": { "type": "boolean" },
+        "executiveSummary": { "type": "boolean" },
+        "appendix": { "type": "boolean" }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "endpoint": { "type": "string", "format": "uri" },
+        "anonymous": { "type": "boolean" }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["simulation", "anthropic"] },
+        "model": { "type": "string" },
+        "dryRun": { "type": "boolean" }
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "efficiencyDetection": { "type": "boolean" },
+        "quotaCeiling": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

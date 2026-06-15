@@ -1,0 +1,33 @@
+resources/
+
+# kept local, not published
+brand/
+test/
+vitest.config.ts
+
+# build output
+dist/
+coverage/
+*.tsbuildinfo
+
+# deps
+node_modules/
+
+# local ledger + runtime state (see src/analytics.ts)
+.tip/
+.tip-ledger.json
+
+# cloudflare / wrangler
+.wrangler/
+.dev.vars
+
+# editor + os
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# logs
+*.log
+npm-debug.log*

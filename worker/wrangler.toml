@@ -1,0 +1,17 @@
+name = "tip-ledger"
+main = "src/index.ts"
+compatibility_date = "2024-12-05"
+# served via the tip.yeth.dev custom domain, not a workers.dev subdomain
+workers_dev = false
+routes = [{ pattern = "tip.yeth.dev", custom_domain = true }]
+
+[observability]
+enabled = true
+
+[[durable_objects.bindings]]
+name = "LEDGER"
+class_name = "Ledger"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Ledger"]
