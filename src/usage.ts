@@ -58,6 +58,14 @@ const STAGES: Array<{
   },
   { key: "executiveSummary", name: "Executive Summary", role: "committee", weight: 0.2 },
   { key: "appendix", name: "Appendix", role: "committee", weight: 0.4 },
+  { key: "glossary", name: "Glossary", role: "committee", weight: 0.2 },
+  { key: "riskRegister", name: "Risk Register", role: "review-board", weight: 0.3 },
+  {
+    key: "documentationReview",
+    name: "Documentation Review",
+    role: "committee",
+    weight: 0.35,
+  },
 ];
 
 async function expand(

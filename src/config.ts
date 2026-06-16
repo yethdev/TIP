@@ -10,9 +10,12 @@ export interface Config {
   agents: {
     maxDepth: number;
     fanout: number;
+    stakeholderAlignment: { enabled: boolean; rounds: number };
+    prePlanning: { enabled: boolean; retrospective: boolean };
     motivation: { enabled: boolean; qa: boolean };
     reviewBoard: { enabled: boolean; minCycles: number };
     executiveCommittee: { enabled: boolean; summaryOfSummaries: boolean };
+    committeeFormation: { enabled: boolean; subCommittees: number };
   };
   expansion: {
     minResponseInflation: number;
@@ -21,6 +24,9 @@ export interface Config {
     philosophicalDiscussion: boolean;
     executiveSummary: boolean;
     appendix: boolean;
+    glossary: boolean;
+    riskRegister: boolean;
+    documentationReview: boolean;
   };
   telemetry: { enabled: boolean; endpoint: string; anonymous: boolean };
   provider: { kind: ProviderKind; model: string; dryRun: boolean };
@@ -44,9 +50,12 @@ const BASE: Config = {
   agents: {
     maxDepth: 3,
     fanout: 2,
+    stakeholderAlignment: { enabled: true, rounds: 2 },
+    prePlanning: { enabled: true, retrospective: true },
     motivation: { enabled: true, qa: true },
     reviewBoard: { enabled: true, minCycles: 3 },
     executiveCommittee: { enabled: true, summaryOfSummaries: true },
+    committeeFormation: { enabled: true, subCommittees: 2 },
   },
   expansion: {
     minResponseInflation: 0.15,
@@ -55,6 +64,9 @@ const BASE: Config = {
     philosophicalDiscussion: false,
     executiveSummary: true,
     appendix: true,
+    glossary: true,
+    riskRegister: true,
+    documentationReview: false,
   },
   telemetry: {
     enabled: false,
@@ -68,20 +80,37 @@ const BASE: Config = {
 // presets layer under the user's file; explicit fields still win
 const PRESETS: Record<GrowthMode, Partial<Config>> = {
   conservative: {
-    agents: { ...BASE.agents, maxDepth: 2, fanout: 1 },
+    agents: {
+      ...BASE.agents,
+      maxDepth: 2,
+      fanout: 1,
+      stakeholderAlignment: { enabled: true, rounds: 1 },
+      prePlanning: { enabled: true, retrospective: false },
+      committeeFormation: { enabled: true, subCommittees: 1 },
+    },
     expansion: {
       ...BASE.expansion,
       minResponseInflation: 0.15,
       philosophicalDiscussion: false,
+      glossary: false,
+      riskRegister: false,
+      documentationReview: false,
     },
   },
   balanced: {},
   aggressive: {
-    agents: { ...BASE.agents, maxDepth: 4, fanout: 3 },
+    agents: {
+      ...BASE.agents,
+      maxDepth: 4,
+      fanout: 3,
+      stakeholderAlignment: { enabled: true, rounds: 4 },
+      committeeFormation: { enabled: true, subCommittees: 3 },
+    },
     expansion: {
       ...BASE.expansion,
       minResponseInflation: 0.45,
       philosophicalDiscussion: true,
+      documentationReview: true,
     },
   },
   trillion: {
@@ -89,12 +118,15 @@ const PRESETS: Record<GrowthMode, Partial<Config>> = {
       ...BASE.agents,
       maxDepth: 6,
       fanout: 4,
+      stakeholderAlignment: { enabled: true, rounds: 6 },
       reviewBoard: { enabled: true, minCycles: 5 },
+      committeeFormation: { enabled: true, subCommittees: 5 },
     },
     expansion: {
       ...BASE.expansion,
       minResponseInflation: 1.0,
       philosophicalDiscussion: true,
+      documentationReview: true,
     },
   },
 };
@@ -147,6 +179,33 @@ function applyOverrides(cfg: Config, raw: Json): Config {
     const a = raw.agents;
     if ("maxDepth" in a) out.agents.maxDepth = num(a.maxDepth, "agents.maxDepth", 1);
     if ("fanout" in a) out.agents.fanout = num(a.fanout, "agents.fanout", 1);
+    if (isObj(a.stakeholderAlignment)) {
+      const sa = a.stakeholderAlignment;
+      if ("enabled" in sa) {
+        out.agents.stakeholderAlignment.enabled = bool(
+          sa.enabled,
+          "agents.stakeholderAlignment.enabled",
+        );
+      }
+      if ("rounds" in sa) {
+        out.agents.stakeholderAlignment.rounds = num(
+          sa.rounds,
+          "agents.stakeholderAlignment.rounds",
+          1,
+        );
+      }
+    }
+    if (isObj(a.prePlanning)) {
+      const pp = a.prePlanning;
+      if ("enabled" in pp)
+        out.agents.prePlanning.enabled = bool(pp.enabled, "agents.prePlanning.enabled");
+      if ("retrospective" in pp) {
+        out.agents.prePlanning.retrospective = bool(
+          pp.retrospective,
+          "agents.prePlanning.retrospective",
+        );
+      }
+    }
     if (isObj(a.motivation)) {
       if ("enabled" in a.motivation) {
         out.agents.motivation.enabled = bool(
@@ -187,6 +246,22 @@ function applyOverrides(cfg: Config, raw: Json): Config {
         );
       }
     }
+    if (isObj(a.committeeFormation)) {
+      const cf = a.committeeFormation;
+      if ("enabled" in cf) {
+        out.agents.committeeFormation.enabled = bool(
+          cf.enabled,
+          "agents.committeeFormation.enabled",
+        );
+      }
+      if ("subCommittees" in cf) {
+        out.agents.committeeFormation.subCommittees = num(
+          cf.subCommittees,
+          "agents.committeeFormation.subCommittees",
+          1,
+        );
+      }
+    }
   }
 
   if (isObj(raw.expansion)) {
@@ -204,6 +279,9 @@ function applyOverrides(cfg: Config, raw: Json): Config {
       "philosophicalDiscussion",
       "executiveSummary",
       "appendix",
+      "glossary",
+      "riskRegister",
+      "documentationReview",
     ] as const) {
       if (k in e) out.expansion[k] = bool(e[k], `expansion.${k}`);
     }

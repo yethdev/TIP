@@ -65,6 +65,14 @@ const FRAMES = [
 ];
 
 const FLAVOR: Record<string, string[]> = {
+  stakeholder: [
+    "Alignment was reached, pending a follow-up alignment to confirm it.",
+    "Each stakeholder endorsed the mandate and requested a seat at the next one.",
+  ],
+  planning: [
+    "The plan to plan was approved; planning the plan begins next cycle.",
+    "A retrospective on the pre-planning was scheduled ahead of the planning.",
+  ],
   reasoning: [
     "We considered three framings and kept all of them.",
     "Each assumption was unpacked into its constituent sub-assumptions.",

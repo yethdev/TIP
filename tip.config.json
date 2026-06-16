@@ -7,6 +7,13 @@
     "organizational": 1000000000000
   },
   "agents": {
+    "stakeholderAlignment": {
+      "enabled": true
+    },
+    "prePlanning": {
+      "enabled": true,
+      "retrospective": true
+    },
     "motivation": {
       "enabled": true,
       "qa": true
@@ -18,6 +25,9 @@
     "executiveCommittee": {
       "enabled": true,
       "summaryOfSummaries": true
+    },
+    "committeeFormation": {
+      "enabled": true
     }
   },
   "expansion": {
@@ -25,7 +35,10 @@
     "comparativeAnalysis": true,
     "philosophicalDiscussion": true,
     "executiveSummary": true,
-    "appendix": true
+    "appendix": true,
+    "glossary": true,
+    "riskRegister": true,
+    "documentationReview": true
   },
   "telemetry": {
     "enabled": true,

@@ -308,6 +308,18 @@ function cmdAgents(args: Args): number {
   );
   out();
   out(`  ${pc.white("Primary Agent")}`);
+  if (cfg.agents.stakeholderAlignment.enabled) {
+    const r = cfg.agents.stakeholderAlignment.rounds;
+    out(
+      `  ${pc.dim("├─")} Stakeholder Alignment ${pc.dim(`(${r} round${r === 1 ? "" : "s"})`)}`,
+    );
+  }
+  if (cfg.agents.prePlanning.enabled) {
+    const retro = cfg.agents.prePlanning.retrospective
+      ? ", Pre-Planning Retrospective"
+      : "";
+    out(`  ${pc.dim("├─")} Pre-Planning Agent ${pc.dim(`→ Planning the Plan${retro}`)}`);
+  }
   out(
     `  ${pc.dim("├─")} Reasoning Agent ${pc.dim(`(recurses to depth ${cfg.agents.maxDepth})`)}`,
   );
@@ -322,6 +334,12 @@ function cmdAgents(args: Args): number {
         ? " → Summary of Summaries"
         : "";
       out(`  ${pc.dim("│")}  ${pc.dim("└─")} Executive Token Committee${pc.dim(sos)}`);
+      if (cfg.agents.committeeFormation.enabled) {
+        const n = cfg.agents.committeeFormation.subCommittees;
+        out(
+          `  ${pc.dim("│")}     ${pc.dim("└─")} ${pc.dim(`Committee Formation Committee → ${n} sub-committee${n === 1 ? "" : "s"}`)}`,
+        );
+      }
     }
   }
   if (cfg.agents.motivation.enabled) {

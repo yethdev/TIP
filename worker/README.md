@@ -1,6 +1,6 @@
 # tip-ledger
 
-The shared ledger that tracks total tokens wasted across all TIP users. It is a
+The shared ledger that tracks total tokens used across all TIP users. It is a
 single Cloudflare Worker fronting one Durable Object instance (`global`), so the
 counter stays atomic no matter how many clients report at once.
 

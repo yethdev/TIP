@@ -1,5 +1,7 @@
 const PROMPTS: Record<string, string> = {
   primary: "Coordinate the response and hand work to the supporting agents.",
+  stakeholder: "Convene the stakeholders, align them, then book a re-alignment.",
+  planning: "Plan the work. Then plan the planning of the work.",
   reasoning: "Reason about the request from every angle, then find more angles.",
   validation: "Validate the work, then validate the validation.",
   poetry: "Write verse about the request. Then write more verse.",
@@ -11,6 +13,8 @@ const PROMPTS: Record<string, string> = {
 
 const NOTES: Record<string, string> = {
   primary: "handed the request to the supporting agents",
+  stakeholder: "aligned the stakeholders and booked a re-alignment",
+  planning: "planned the work, then planned the planning",
   reasoning: "expanded the request into more reasoning",
   validation: "validated the work and queued a re-validation",
   poetry: "wrote verse about the request",

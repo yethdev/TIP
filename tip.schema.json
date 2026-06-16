@@ -27,6 +27,22 @@
       "properties": {
         "maxDepth": { "type": "integer", "minimum": 1, "maximum": 12 },
         "fanout": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "stakeholderAlignment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "rounds": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "prePlanning": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "retrospective": { "type": "boolean" }
+          }
+        },
         "motivation": {
           "type": "object",
           "additionalProperties": false,
@@ -50,6 +66,14 @@
             "enabled": { "type": "boolean" },
             "summaryOfSummaries": { "type": "boolean" }
           }
+        },
+        "committeeFormation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "subCommittees": { "type": "integer", "minimum": 1 }
+          }
         }
       }
     },
@@ -62,7 +86,10 @@
         "comparativeAnalysis": { "type": "boolean" },
         "philosophicalDiscussion": { "type": "boolean" },
         "executiveSummary": { "type": "boolean" },
-        "appendix": { "type": "boolean" }
+        "appendix": { "type": "boolean" },
+        "glossary": { "type": "boolean" },
+        "riskRegister": { "type": "boolean" },
+        "documentationReview": { "type": "boolean" }
       }
     },
     "telemetry": {

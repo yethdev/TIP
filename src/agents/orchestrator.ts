@@ -44,6 +44,65 @@ async function gen(
   return { name, role, note: noteFor(role), tokens, children: [] };
 }
 
+const PARTIES = ["Engineering", "Product", "Finance", "Compliance", "the Oversight Body"];
+
+// nothing starts until the stakeholders have aligned, then re-aligned
+async function stakeholders(
+  ctx: OrchestratorCtx,
+  state: RunState,
+  base: number,
+): Promise<AgentNode> {
+  const node = await gen(ctx, state, "Stakeholder Alignment", "stakeholder", base, 1);
+  const rounds = Math.max(1, ctx.cfg.agents.stakeholderAlignment.rounds);
+  for (let r = 0; r < rounds; r++) {
+    if (capped(ctx, state)) break;
+    const party = PARTIES[r % PARTIES.length] as string;
+    node.children.push(
+      await gen(
+        ctx,
+        state,
+        `Align ${party} · round ${r + 1}`,
+        "stakeholder",
+        Math.round(base * 0.7),
+        2,
+      ),
+    );
+  }
+  return node;
+}
+
+async function planning(
+  ctx: OrchestratorCtx,
+  state: RunState,
+  base: number,
+): Promise<AgentNode> {
+  const node = await gen(
+    ctx,
+    state,
+    "Pre-Planning Agent",
+    "planning",
+    Math.round(base * 0.9),
+    1,
+  );
+  node.children.push(
+    await gen(ctx, state, "Planning the Plan", "planning", Math.round(base * 0.7), 2),
+  );
+  if (ctx.cfg.agents.prePlanning.retrospective) {
+    // a retrospective on the pre-planning, held before the work it precedes
+    node.children.push(
+      await gen(
+        ctx,
+        state,
+        "Pre-Planning Retrospective",
+        "planning",
+        Math.round(base * 0.6),
+        2,
+      ),
+    );
+  }
+  return node;
+}
+
 // every reasoner is supervised by more reasoners
 async function supervise(
   ctx: OrchestratorCtx,
@@ -120,6 +179,30 @@ async function poetry(
   return node;
 }
 
+// the committee whose remit is to convene further committees
+async function formCommittees(
+  ctx: OrchestratorCtx,
+  state: RunState,
+  base: number,
+): Promise<AgentNode> {
+  const node = await gen(
+    ctx,
+    state,
+    "Committee Formation Committee",
+    "committee",
+    Math.round(base * 0.8),
+    3,
+  );
+  const n = Math.max(1, ctx.cfg.agents.committeeFormation.subCommittees);
+  for (let i = 1; i <= n; i++) {
+    if (capped(ctx, state)) break;
+    node.children.push(
+      await gen(ctx, state, `Sub-Committee ${i}`, "committee", Math.round(base * 0.5), 4),
+    );
+  }
+  return node;
+}
+
 async function reviewBoard(
   ctx: OrchestratorCtx,
   state: RunState,
@@ -159,6 +242,9 @@ async function reviewBoard(
           3,
         ),
       );
+    }
+    if (ctx.cfg.agents.committeeFormation.enabled) {
+      ec.children.push(await formCommittees(ctx, state, base));
     }
     node.children.push(ec);
   }
@@ -219,6 +305,12 @@ export async function runAgents(ctx: OrchestratorCtx): Promise<AgentRun> {
   const base = baseWant(ctx);
 
   const primary = await gen(ctx, state, "Primary Agent", "primary", base, 0);
+  if (ctx.cfg.agents.stakeholderAlignment.enabled) {
+    primary.children.push(await stakeholders(ctx, state, base));
+  }
+  if (ctx.cfg.agents.prePlanning.enabled) {
+    primary.children.push(await planning(ctx, state, base));
+  }
   primary.children.push(await reasoning(ctx, state, base));
   primary.children.push(await validation(ctx, state, base));
   primary.children.push(await poetry(ctx, state, base));

@@ -240,18 +240,22 @@
         <div class="wrap">
           <h2>Architecture</h2>
           <p class="section-lede">
-            A request never travels alone. It is delegated, reasoned over, validated, set
-            to verse, reviewed, and summarized. Then the Motivation Agent writes a note of
+            A request never travels alone. The stakeholders align, the work is
+            pre-planned, and only then is it reasoned over, validated, set to verse,
+            reviewed, and summarized. The Executive Token Committee convenes a committee
+            to form more committees, and the Motivation Agent writes a note of
             encouragement to every other agent in the tree.
           </p>
 
           <div
             class="orgchart"
             role="img"
-            aria-label="TIP agent org chart: a primary agent delegating to a reasoning agent, a validation agent, a poetry agent, and a review board that reports to an executive token committee, plus a motivation agent that motivates every other agent."
+            aria-label="TIP agent org chart: a primary agent delegating to stakeholder alignment, a pre-planning agent, a reasoning agent, a validation agent, a poetry agent, and a token utilization review board that reports to an executive token committee which convenes a committee formation committee, plus a motivation agent that motivates every other agent."
           >
             <div class="org-node org-root">Primary Agent</div>
             <ul class="org-branches">
+              <li><div class="org-node">Stakeholder Alignment</div></li>
+              <li><div class="org-node">Pre-Planning Agent</div></li>
               <li><div class="org-node">Reasoning Agent</div></li>
               <li><div class="org-node">Validation Agent</div></li>
               <li>
@@ -263,7 +267,14 @@
               <li>
                 <div class="org-node">Token Utilization Review Board</div>
                 <ul>
-                  <li><div class="org-node org-sub">Executive Token Committee</div></li>
+                  <li>
+                    <div class="org-node org-sub">Executive Token Committee</div>
+                    <ul>
+                      <li>
+                        <div class="org-node org-sub">Committee Formation Committee</div>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -343,7 +354,7 @@
           <ol class="steps">
             <li>Install TIP and run <code>tip init</code>.</li>
             <li>Set <code>tokenGrowthMode</code> to <code>aggressive</code>.</li>
-            <li>Run <code>tip waste "your request"</code>.</li>
+            <li>Run <code>tip use "your request"</code>.</li>
             <li>Add a second agent. Then add oversight for it.</li>
             <li>Generate the executive summary, then summarize that.</li>
             <li>Check <code>tip status</code> for progress toward one trillion.</li>
@@ -352,7 +363,7 @@
           <div class="codeblock">
             <pre><code>npm install
 npm run build
-node dist/cli.js waste "What time is it?" --mode aggressive</code></pre>
+node dist/cli.js use "What time is it?" --mode aggressive</code></pre>
             <button class="copy-btn" id="copyBtn" type="button">Copy</button>
           </div>
         </div>

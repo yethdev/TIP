@@ -121,17 +121,23 @@
 
   /* ---- request expander ---- */
   const STAGES = [
+    { name: "Stakeholder alignment", w: 5 },
+    { name: "Pre-planning (+ retrospective)", w: 3 },
     { name: "Reasoning + sub-reasoners", w: 14 },
     { name: "Validation + re-validation", w: 4 },
     { name: "Poetry agent (+ peer review)", w: 5 },
     { name: "Review board (3 cycles)", w: 6 },
     { name: "Executive token committee", w: 3 },
-    { name: "Motivating every other agent", w: 11 },
+    { name: "Committee formation (+ sub-committees)", w: 4 },
+    { name: "Motivating every other agent", w: 14 },
     { name: "Historical context", w: 2 },
     { name: "Comparative analysis", w: 2 },
     { name: "Philosophical discussion", w: 2.4 },
     { name: "Executive summary", w: 1.5 },
     { name: "Appendix", w: 3 },
+    { name: "Glossary", w: 2 },
+    { name: "Risk register", w: 3 },
+    { name: "Documentation review", w: 3.5 },
   ];
 
   const form = document.getElementById("expander");
@@ -203,7 +209,7 @@
   const INSTALL = [
     "npm install",
     "npm run build",
-    'node dist/cli.js waste "What time is it?" --mode aggressive',
+    'node dist/cli.js use "What time is it?" --mode aggressive',
   ].join("\n");
 
   const copyBtn = document.getElementById("copyBtn");
