@@ -5,6 +5,13 @@ compatibility_date = "2024-12-05"
 workers_dev = false
 routes = [{ pattern = "tip.yeth.dev", custom_domain = true }]
 
+# the marketing site ships from the same worker; /total and /report fall
+# through to the fetch handler, every other path is served from ../docs
+[assets]
+directory = "../docs"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
 [observability]
 enabled = true
 

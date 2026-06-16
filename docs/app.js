@@ -2,8 +2,8 @@
 (() => {
   "use strict";
 
-  // the shared ledger worker
-  const LEDGER_URL = "https://tip.yeth.dev";
+  // the ledger ships from the same worker as this page, so hit it same-origin
+  const LEDGER_URL = "";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---- theme ---- */

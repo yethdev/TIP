@@ -2,6 +2,7 @@ import { DurableObject } from "cloudflare:workers";
 
 export interface Env {
   LEDGER: DurableObjectNamespace<Ledger>;
+  ASSETS: Fetcher;
 }
 
 interface Snapshot {
@@ -15,10 +16,12 @@ const MAX_PER_REPORT = 1_000_000_000_000;
 const RATE_LIMIT = 60; // reports per IP per window
 const WINDOW_MS = 60_000;
 
+// the site is same-origin now; these only matter for third parties embedding
+// the counter, plus the local `wrangler dev` port
 const ALLOWED_ORIGINS = new Set([
-  "https://yethdev.github.io",
-  "http://localhost:8000",
-  "http://127.0.0.1:8000",
+  "https://tip.yeth.dev",
+  "http://localhost:8787",
+  "http://127.0.0.1:8787",
 ]);
 
 // Every report funnels through one instance ("global") so the total stays
@@ -75,8 +78,7 @@ export class Ledger extends DurableObject<Env> {
 }
 
 function cors(origin: string | null): Record<string, string> {
-  const allow =
-    origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://yethdev.github.io";
+  const allow = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://tip.yeth.dev";
   return {
     "access-control-allow-origin": allow,
     "access-control-allow-methods": "GET, POST, OPTIONS",
@@ -128,25 +130,23 @@ async function handleReport(
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
-    const origin = req.headers.get("origin");
 
-    if (req.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: cors(origin) });
+    // ledger API. Everything else - the site, its assets, the 404 page - is
+    // served from ../docs by the assets binding.
+    if (url.pathname === "/total" || url.pathname === "/report") {
+      const origin = req.headers.get("origin");
+      if (req.method === "OPTIONS") {
+        return new Response(null, { status: 204, headers: cors(origin) });
+      }
+      if (url.pathname === "/total" && req.method === "GET") {
+        return json(await stub(env).read(), 200, origin);
+      }
+      if (url.pathname === "/report" && req.method === "POST") {
+        return handleReport(req, env, origin);
+      }
+      return json({ error: "method not allowed" }, 405, origin);
     }
 
-    if (url.pathname === "/total" && req.method === "GET") {
-      return json(await stub(env).read(), 200, origin);
-    }
-
-    if (url.pathname === "/report" && req.method === "POST") {
-      return handleReport(req, env, origin);
-    }
-
-    if (url.pathname === "/" && req.method === "GET") {
-      const snap = await stub(env).read();
-      return json({ service: "tip-ledger", ...snap }, 200, origin);
-    }
-
-    return json({ error: "not found" }, 404, origin);
+    return env.ASSETS.fetch(req);
   },
 } satisfies ExportedHandler<Env>;

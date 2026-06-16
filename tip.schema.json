@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://yethdev.github.io/tip/tip.schema.json",
+  "$id": "https://tip.yeth.dev/tip.schema.json",
   "title": "TIP Configuration",
   "description": "Settings that govern token growth across a TIP deployment.",
   "type": "object",
