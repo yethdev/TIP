@@ -1,20 +1,21 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Not found - TIP</title>
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#1f7a4d" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0e1210" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <style>
       .nf {
-        min-height: 76vh;
+        min-height: 78vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -24,20 +25,22 @@
       }
       .nf .code {
         font-family: var(--font-mono);
-        color: var(--green-deep);
-        letter-spacing: 0.1em;
+        color: var(--green-bright);
+        letter-spacing: 0.12em;
+        margin: 0;
       }
       .nf h1 {
         max-width: 18ch;
+        margin: 0;
       }
     </style>
   </head>
   <body>
     <main class="wrap nf">
       <p class="code">404</p>
-      <img src="assets/logo.svg" width="48" height="48" alt="TIP logo" />
+      <img src="/assets/logo.svg" width="48" height="48" alt="TIP logo" />
       <h1>This page reached its conclusion too quickly.</h1>
-      <p class="section-lede" style="margin: 0">
+      <p class="lede" style="margin: 0">
         Whatever you were after is not here. The committee has been notified.
       </p>
       <a class="btn btn-solid" href="/">Back to TIP</a>

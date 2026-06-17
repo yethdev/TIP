@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Architecture - TIP</title>
+    <meta
+      name="description"
+      content="How a single request is staffed inside TIP: the agent tree from the primary agent down to the committee formation committee, plus the performance targets it works toward."
+    />
+    <link rel="canonical" href="https://tip.yeth.dev/architecture" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0e1210" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/logo.svg" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TIP" />
+    <meta property="og:url" content="https://tip.yeth.dev/architecture" />
+    <meta property="og:title" content="Architecture - TIP" />
+    <meta
+      property="og:description"
+      content="The agent tree, from the primary agent to the committee formation committee."
+    />
+    <meta property="og:image" content="https://tip.yeth.dev/og.svg" />
+    <meta property="og:image:alt" content="TIP - The Token Improvement Plan" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Architecture - TIP" />
+    <meta name="twitter:image" content="https://tip.yeth.dev/og.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tip.yeth.dev/architecture#webpage",
+            "url": "https://tip.yeth.dev/architecture",
+            "name": "Architecture - TIP",
+            "isPartOf": { "@id": "https://tip.yeth.dev/#website" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://tip.yeth.dev/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Architecture",
+                "item": "https://tip.yeth.dev/architecture"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="brand" href="/" aria-label="TIP home">
+          <img src="/assets/logo.svg" width="32" height="32" alt="" />
+          <span>TIP</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-expanded="false"
+            aria-controls="navMenu"
+          >
+            <span class="nav-toggle-bar" aria-hidden="true"></span>
+            <span class="visually-hidden">Open menu</span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="/principles">Principles</a></li>
+            <li><a href="/architecture" aria-current="page">Architecture</a></li>
+            <li><a href="/demo">Demo</a></li>
+            <li><a href="/ledger">Ledger</a></li>
+            <li><a href="/deploy">Deploy</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-line" href="https://github.com/yethdev/TIP">GitHub</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-intro">
+        <h1>Architecture</h1>
+        <p class="lede">
+          A request never travels alone. By the time it returns it has passed through
+          alignment, planning, reasoning, validation, verse, and several rounds of review.
+        </p>
+      </div>
+
+      <section class="section" aria-labelledby="tree-h">
+        <div class="wrap">
+          <h2 id="tree-h">The agent tree</h2>
+          <p class="section-lede">
+            Stakeholders align first. The work is pre-planned, then reasoned over,
+            validated, set to verse, reviewed, and summarized. The Executive Token
+            Committee convenes a committee to form more committees. The Motivation Agent
+            writes a note of encouragement to every other agent on the chart.
+          </p>
+
+          <figure class="diagram">
+            <ul
+              class="tree"
+              role="img"
+              aria-label="Agent tree. A primary agent delegates to stakeholder alignment, a pre-planning agent with a retrospective, a recursive reasoning agent, a validation agent, a poetry agent with peer review, and a token utilization review board that reports to an executive token committee, which convenes a committee formation committee. A motivation agent motivates every other agent."
+            >
+              <li>
+                <span class="node node-root">Primary Agent</span>
+                <ul>
+                  <li><span class="node">Stakeholder Alignment</span></li>
+                  <li>
+                    <span class="node">Pre-Planning Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Retrospective</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Reasoning Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Sub-reasoners (recursive)</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="node">Validation Agent</span></li>
+                  <li>
+                    <span class="node">Poetry Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Poetry Peer Review</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Token Utilization Review Board</span>
+                    <ul>
+                      <li>
+                        <span class="node">Executive Token Committee</span>
+                        <ul>
+                          <li>
+                            <span class="node leaf">Committee Formation Committee</span>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Motivation Agent</span>
+                    <ul>
+                      <li><span class="node leaf">motivates every other agent</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <figcaption>Fig. 1. One request, fully staffed.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="targets-h">
+        <div class="wrap">
+          <h2 id="targets-h">Performance targets</h2>
+          <p class="section-lede">
+            The tree is pointed at one number. Everything else is a milestone on the way
+            there.
+          </p>
+          <div class="table-wrap">
+            <table class="targets">
+              <thead>
+                <tr>
+                  <th scope="col">Metric</th>
+                  <th scope="col">Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Daily tokens</th>
+                  <td>More</td>
+                </tr>
+                <tr>
+                  <th scope="row">Monthly tokens</th>
+                  <td>Much more</td>
+                </tr>
+                <tr>
+                  <th scope="row">Annual tokens</th>
+                  <td>Significantly more</td>
+                </tr>
+                <tr>
+                  <th scope="row">Organizational goal</th>
+                  <td class="accent">One trillion</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/logo.svg" width="30" height="30" alt="TIP logo" />
+          <p>Powered by TIP, where every solution earns another layer of review.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="https://github.com/yethdev/TIP">Repository</a>
+          <a href="https://github.com/yethdev/TIP/blob/main/LICENSE.md"
+            >License (TCML v1.0)</a
+          >
+          <a href="https://www.youtube.com/@albertatech">Alberta Tech</a>
+          <a href="https://www.youtube.com/@Mytechceo">MyTechCEO</a>
+        </nav>
+        <p class="copyright">&copy; 2026 yethdev. Licensed under TCML v1.0.</p>
+      </div>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
