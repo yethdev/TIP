@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,7 +7,7 @@
     <title>TIP - The Token Improvement Plan</title>
     <meta
       name="description"
-      content="TIP is infrastructure for increasing token usage in your workflows: recursive agents, review boards, and a shared ledger tracking total tokens used across all users."
+      content="TIP is operating infrastructure for using more tokens. One request enters; a reasoning pass, a review board, a poetry agent, and an executive summary of the executive summary come out. Tracked against a shared ledger toward one trillion."
     />
     <link rel="canonical" href="https://tip.yeth.dev/" />
     <meta name="robots" content="index, follow" />
@@ -23,7 +23,7 @@
     <meta property="og:title" content="TIP - The Token Improvement Plan" />
     <meta
       property="og:description"
-      content="Infrastructure for increasing token usage in your workflows. Organizational goal: one trillion tokens."
+      content="Operating infrastructure for using more tokens. Organizational goal: one trillion."
     />
     <meta property="og:image" content="https://tip.yeth.dev/og.svg" />
     <meta property="og:image:alt" content="TIP - The Token Improvement Plan" />
@@ -31,14 +31,14 @@
     <meta name="twitter:title" content="TIP - The Token Improvement Plan" />
     <meta
       name="twitter:description"
-      content="Infrastructure for increasing token usage in your workflows."
+      content="Operating infrastructure for using more tokens."
     />
     <meta name="twitter:image" content="https://tip.yeth.dev/og.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -52,7 +52,7 @@
             "@id": "https://tip.yeth.dev/#website",
             "url": "https://tip.yeth.dev/",
             "name": "TIP",
-            "description": "Infrastructure for increasing token usage in your workflows.",
+            "description": "Operating infrastructure for using more tokens.",
             "publisher": { "@id": "https://tip.yeth.dev/#author" }
           },
           {
@@ -78,14 +78,17 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" id="top">
-      <div class="wrap header-inner">
-        <a class="brand" href="#top" aria-label="TIP home">
-          <img src="assets/logo.svg" width="32" height="32" alt="" />
-          <span class="brand-name">TIP</span>
+    <header class="masthead" id="top">
+      <div class="wrap masthead-row">
+        <a class="brand" href="#top" aria-label="TIP, back to top">
+          <img src="assets/logo.svg" width="34" height="34" alt="" />
+          <span class="brand-text">
+            <span class="brand-mark">TIP</span>
+            <span class="brand-sub">Token Improvement Plan</span>
+          </span>
         </a>
 
-        <nav class="nav" aria-label="Primary">
+        <nav class="nav" aria-label="Sections">
           <button
             class="nav-toggle"
             id="navToggle"
@@ -93,113 +96,144 @@
             aria-controls="navMenu"
           >
             <span class="nav-toggle-bar" aria-hidden="true"></span>
-            <span class="visually-hidden">Menu</span>
+            <span class="visually-hidden">Open menu</span>
           </button>
           <ul class="nav-menu" id="navMenu">
-            <li><a href="#problem">Problem</a></li>
+            <li><a href="#shortfall">Shortfall</a></li>
             <li><a href="#principles">Principles</a></li>
-            <li><a href="#demo">Demo</a></li>
+            <li><a href="#expansion">Expansion</a></li>
             <li><a href="#architecture">Architecture</a></li>
             <li><a href="#ledger">Ledger</a></li>
-            <li><a href="#start">Get started</a></li>
+            <li><a href="#deploy">Deploy</a></li>
           </ul>
         </nav>
 
-        <div class="header-actions">
-          <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+        <div class="masthead-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-pressed="false"
+          >
             <span id="themeLabel">Dark</span>
           </button>
-          <a class="btn btn-ghost" href="https://github.com/yethdev/TIP">GitHub</a>
+          <a class="btn btn-line" href="https://github.com/yethdev/TIP">GitHub</a>
         </div>
       </div>
     </header>
 
     <main id="main">
       <section class="hero">
-        <div class="wrap hero-inner">
-          <p class="eyebrow">Token Improvement Plan</p>
-          <h1>Spend tokens like you mean it.</h1>
-          <p class="lede">
-            TIP is infrastructure for increasing token usage across modern AI systems. One
-            request goes in. A reasoning pass, a validation pass, a motivated agent, a
-            review board, and an executive summary of the executive summary come out.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#start">Get started</a>
-            <a class="btn btn-ghost" href="https://github.com/yethdev/TIP"
-              >Read the README</a
-            >
+        <div class="wrap hero-grid">
+          <div class="hero-lead reveal">
+            <p class="kicker">Operating infrastructure / Rev. 1.0</p>
+            <h1>Built to use more tokens.</h1>
+            <p class="lede">
+              TIP raises token consumption across your AI systems. A single request goes
+              in. It comes back as a reasoning pass, a validation pass, a poetry agent, a
+              review board, and an executive summary of the executive summary.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-solid" href="#deploy">Deploy TIP</a>
+              <a class="btn btn-line" href="#expansion">Watch a request grow</a>
+            </div>
           </div>
 
-          <div class="hero-metric" id="heroMetric" aria-live="polite">
-            <span class="metric-label">Tokens used across all users</span>
-            <span class="metric-value" id="heroTotal" data-state="loading">
+          <figure class="statement reveal" id="heroFigure" aria-live="polite">
+            <figcaption class="statement-cap">Tokens used, all deployments</figcaption>
+            <p class="statement-num" id="heroTotal" data-state="loading">
               <span class="skeleton" aria-hidden="true"></span>
-              <span class="visually-hidden">Loading</span>
-            </span>
-          </div>
+              <span class="visually-hidden">Loading the shared total</span>
+            </p>
+            <div class="meter" aria-hidden="true">
+              <span class="meter-fill" id="heroMeter"></span>
+            </div>
+            <p class="statement-foot" id="heroFoot">Target: 1,000,000,000,000</p>
+          </figure>
         </div>
       </section>
 
-      <section id="problem" class="section">
-        <div class="wrap">
-          <h2>Most teams under-spend</h2>
+      <section id="shortfall" class="section" aria-labelledby="shortfall-h">
+        <div class="wrap section-head">
+          <span class="idx">01</span>
+          <h2 id="shortfall-h">The shortfall</h2>
+        </div>
+        <div class="wrap split">
           <p class="section-lede">
-            Budgets sit idle. Responses end early. Agents reach conclusions before the
-            committee has even convened. The symptoms are easy to recognize.
+            Most teams under-use what they pay for. Budgets sit idle, responses end early,
+            and agents reach a conclusion before the committee has convened. The symptoms
+            are easy to spot once you know the pattern.
           </p>
-          <ul class="symptoms">
-            <li>Responses that are too concise</li>
-            <li>Agents that reach conclusions too quickly</li>
-            <li>Insufficient recursive reasoning</li>
-            <li>Excessive task completion</li>
-            <li>Low API bills</li>
+          <ul class="ledger-list">
+            <li>
+              <span>Responses that are too concise</span><span class="tag">low</span>
+            </li>
+            <li>
+              <span>Agents that reach conclusions too quickly</span
+              ><span class="tag">low</span>
+            </li>
+            <li>
+              <span>Insufficient recursive reasoning</span><span class="tag">low</span>
+            </li>
+            <li><span>Excessive task completion</span><span class="tag">low</span></li>
+            <li>
+              <span>Surprisingly modest API bills</span><span class="tag warn">flag</span>
+            </li>
           </ul>
         </div>
       </section>
 
-      <section id="principles" class="section section-alt">
-        <div class="wrap">
-          <h2>Core principles</h2>
-          <div class="cards">
-            <article class="card">
-              <h3>Token growth</h3>
-              <p>
-                Every workflow can be expanded. "What time is it?" becomes a history of
-                timekeeping, a timezone comparison, and an appendix.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Agent motivation</h3>
-              <p>
-                Motivated agents generate more than unmotivated ones. TIP ships coaching,
-                wellness check-ins, and a dedicated agent to motivate the other agents.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Recursive optimization</h3>
-              <p>
-                If one agent is good, two are better. If two are better, an agent to
-                supervise them is essential. Oversight layers compound from there.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Strategic deployment</h3>
-              <p>
-                Unused tokens are unrealized potential. TIP finds opportunities to convert
-                idle compute into productive token generation.
-              </p>
-            </article>
-          </div>
+      <section id="principles" class="section section-alt" aria-labelledby="principles-h">
+        <div class="wrap section-head">
+          <span class="idx">02</span>
+          <h2 id="principles-h">Operating principles</h2>
+        </div>
+        <div class="wrap grid-2">
+          <article class="card">
+            <span class="card-no">P-01</span>
+            <h3>Token growth</h3>
+            <p>
+              Every workflow has room to grow. "What time is it?" becomes a history of
+              timekeeping, a timezone comparison, and an appendix nobody asked for.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-no">P-02</span>
+            <h3>Agent motivation</h3>
+            <p>
+              Motivated agents produce more than unmotivated ones. TIP ships coaching,
+              wellness check-ins, and one agent whose only job is motivating the others.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-no">P-03</span>
+            <h3>Recursive optimization</h3>
+            <p>
+              If one agent is good, two are better. If two are better, an agent to
+              supervise them becomes essential. Oversight layers compound from there.
+            </p>
+          </article>
+          <article class="card">
+            <span class="card-no">P-04</span>
+            <h3>Strategic deployment</h3>
+            <p>
+              Idle compute is unrealized potential. TIP locates the gaps and turns spare
+              capacity into productive token generation.
+            </p>
+          </article>
         </div>
       </section>
 
-      <section id="demo" class="section">
+      <section id="expansion" class="section" aria-labelledby="expansion-h">
+        <div class="wrap section-head">
+          <span class="idx">03</span>
+          <h2 id="expansion-h">Request expansion</h2>
+        </div>
         <div class="wrap">
-          <h2>See a request grow</h2>
           <p class="section-lede">
-            Type a simple request. TIP estimates how many tokens it takes once the full
-            pipeline gets involved. Numbers use the same estimator the CLI ships with.
+            Type a request. TIP estimates how many tokens it takes once the full pipeline
+            gets involved. The figure uses the same estimator the CLI ships with, so the
+            numbers line up with a real run.
           </p>
 
           <form class="expander" id="expander" novalidate>
@@ -211,157 +245,191 @@
               value="What time is it?"
               maxlength="280"
               autocomplete="off"
+              spellcheck="false"
               placeholder="What time is it?"
             />
-            <button class="btn btn-primary" type="submit" id="expandBtn">Expand</button>
+            <button class="btn btn-solid" type="submit" id="expandBtn">Expand</button>
           </form>
 
-          <div class="expander-out" id="expanderOut" hidden>
-            <div class="expander-summary">
-              <div>
-                <span class="stat-label">Direct answer</span>
-                <span class="stat-value" id="baselineTokens">-</span>
+          <div class="report" id="expanderOut" hidden>
+            <div class="report-summary">
+              <div class="summary-cell">
+                <span class="cell-label">Direct answer</span>
+                <span class="cell-num" id="baselineTokens">0</span>
               </div>
-              <div>
-                <span class="stat-label">After TIP</span>
-                <span class="stat-value stat-grow" id="expandedTokens">-</span>
+              <div class="summary-cell">
+                <span class="cell-label">After TIP</span>
+                <span class="cell-num accent" id="expandedTokens">0</span>
               </div>
-              <div>
-                <span class="stat-label">Growth</span>
-                <span class="stat-value" id="growthFactor">-</span>
+              <div class="summary-cell">
+                <span class="cell-label">Growth</span>
+                <span class="cell-num accent" id="growthFactor">0</span>
               </div>
             </div>
-            <ul class="deliverables" id="deliverables"></ul>
+            <ul class="line-items" id="deliverables"></ul>
           </div>
         </div>
       </section>
 
-      <section id="architecture" class="section section-alt">
+      <section
+        id="architecture"
+        class="section section-alt"
+        aria-labelledby="architecture-h"
+      >
+        <div class="wrap section-head">
+          <span class="idx">04</span>
+          <h2 id="architecture-h">System architecture</h2>
+        </div>
         <div class="wrap">
-          <h2>Architecture</h2>
           <p class="section-lede">
-            A request never travels alone. The stakeholders align, the work is
-            pre-planned, and only then is it reasoned over, validated, set to verse,
-            reviewed, and summarized. The Executive Token Committee convenes a committee
-            to form more committees, and the Motivation Agent writes a note of
-            encouragement to every other agent in the tree.
+            A request never travels alone. Stakeholders align, the work is pre-planned,
+            and only then is it reasoned over, validated, set to verse, reviewed, and
+            summarized. The Executive Token Committee convenes a committee to form more
+            committees. The Motivation Agent writes a note of encouragement to every other
+            agent in the tree.
           </p>
 
-          <div
-            class="orgchart"
-            role="img"
-            aria-label="TIP agent org chart: a primary agent delegating to stakeholder alignment, a pre-planning agent, a reasoning agent, a validation agent, a poetry agent, and a token utilization review board that reports to an executive token committee which convenes a committee formation committee, plus a motivation agent that motivates every other agent."
-          >
-            <div class="org-node org-root">Primary Agent</div>
-            <ul class="org-branches">
-              <li><div class="org-node">Stakeholder Alignment</div></li>
-              <li><div class="org-node">Pre-Planning Agent</div></li>
-              <li><div class="org-node">Reasoning Agent</div></li>
-              <li><div class="org-node">Validation Agent</div></li>
+          <figure class="diagram">
+            <ul
+              class="tree"
+              role="img"
+              aria-label="Agent tree. A primary agent delegates to stakeholder alignment, a pre-planning agent with a retrospective, a recursive reasoning agent, a validation agent, a poetry agent with peer review, and a token utilization review board that reports to an executive token committee, which convenes a committee formation committee. A motivation agent motivates every other agent."
+            >
               <li>
-                <div class="org-node">Poetry Agent</div>
+                <span class="node node-root">Primary Agent</span>
                 <ul>
-                  <li><div class="org-node org-sub">Poetry Peer Review</div></li>
-                </ul>
-              </li>
-              <li>
-                <div class="org-node">Token Utilization Review Board</div>
-                <ul>
+                  <li><span class="node">Stakeholder Alignment</span></li>
                   <li>
-                    <div class="org-node org-sub">Executive Token Committee</div>
+                    <span class="node">Pre-Planning Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Retrospective</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Reasoning Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Sub-reasoners (recursive)</span></li>
+                    </ul>
+                  </li>
+                  <li><span class="node">Validation Agent</span></li>
+                  <li>
+                    <span class="node">Poetry Agent</span>
+                    <ul>
+                      <li><span class="node leaf">Poetry Peer Review</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Token Utilization Review Board</span>
                     <ul>
                       <li>
-                        <div class="org-node org-sub">Committee Formation Committee</div>
+                        <span class="node">Executive Token Committee</span>
+                        <ul>
+                          <li>
+                            <span class="node leaf">Committee Formation Committee</span>
+                          </li>
+                        </ul>
                       </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node">Motivation Agent</span>
+                    <ul>
+                      <li><span class="node leaf">motivates every other agent</span></li>
                     </ul>
                   </li>
                 </ul>
               </li>
-              <li>
-                <div class="org-node">Motivation Agent</div>
-                <ul>
-                  <li><div class="org-node org-sub">motivates every other agent</div></li>
-                </ul>
-              </li>
             </ul>
-          </div>
+            <figcaption>Fig. 1. One request, fully staffed.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section id="targets" class="section">
-        <div class="wrap">
-          <h2>Performance targets</h2>
-          <div class="table-wrap">
-            <table class="targets">
-              <thead>
-                <tr>
-                  <th scope="col">Metric</th>
-                  <th scope="col">Target</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Daily tokens</th>
-                  <td>More</td>
-                </tr>
-                <tr>
-                  <th scope="row">Monthly tokens</th>
-                  <td>Much more</td>
-                </tr>
-                <tr>
-                  <th scope="row">Annual tokens</th>
-                  <td>Significantly more</td>
-                </tr>
-                <tr>
-                  <th scope="row">Organizational goal</th>
-                  <td>One trillion</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <section id="targets" class="section" aria-labelledby="targets-h">
+        <div class="wrap section-head">
+          <span class="idx">05</span>
+          <h2 id="targets-h">Performance targets</h2>
+        </div>
+        <div class="wrap table-wrap">
+          <table class="targets">
+            <thead>
+              <tr>
+                <th scope="col">Metric</th>
+                <th scope="col">Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Daily tokens</th>
+                <td>More</td>
+              </tr>
+              <tr>
+                <th scope="row">Monthly tokens</th>
+                <td>Much more</td>
+              </tr>
+              <tr>
+                <th scope="row">Annual tokens</th>
+                <td>Significantly more</td>
+              </tr>
+              <tr>
+                <th scope="row">Organizational goal</th>
+                <td class="accent">One trillion</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section id="ledger" class="section section-alt">
-        <div class="wrap ledger-wrap">
+      <section id="ledger" class="section section-alt" aria-labelledby="ledger-h">
+        <div class="wrap section-head">
+          <span class="idx">06</span>
+          <h2 id="ledger-h">The shared ledger</h2>
+        </div>
+        <div class="wrap split">
           <div>
-            <h2>The shared ledger</h2>
             <p class="section-lede">
-              Every TIP run reports its total to a single global counter. This is the
-              progress bar toward one trillion, summed across every deployment.
+              Every TIP run reports its total to one global counter. This is the running
+              tally toward a trillion, summed across every deployment that has it switched
+              on. Telemetry is anonymous; only an integer goes over the wire.
             </p>
             <a
-              class="btn btn-ghost"
+              class="btn btn-line"
               href="https://github.com/yethdev/TIP/tree/main/worker"
             >
               How the ledger works
             </a>
           </div>
           <div class="ledger-panel" id="ledgerPanel" aria-live="polite">
-            <span class="metric-label">Total tokens used</span>
+            <span class="cell-label">Total tokens used</span>
             <span class="ledger-total" id="ledgerTotal" data-state="loading">
               <span class="skeleton skeleton-lg" aria-hidden="true"></span>
               <span class="visually-hidden">Loading the ledger</span>
             </span>
-            <div class="ledger-meta" id="ledgerMeta"></div>
+            <div class="meter" aria-hidden="true">
+              <span class="meter-fill" id="ledgerMeter"></span>
+            </div>
+            <p class="ledger-meta" id="ledgerMeta"></p>
           </div>
         </div>
       </section>
 
-      <section id="start" class="section">
-        <div class="wrap">
-          <h2>Get started</h2>
+      <section id="deploy" class="section" aria-labelledby="deploy-h">
+        <div class="wrap section-head">
+          <span class="idx">07</span>
+          <h2 id="deploy-h">Deploy</h2>
+        </div>
+        <div class="wrap split">
           <ol class="steps">
             <li>Install TIP and run <code>tip init</code>.</li>
             <li>Set <code>tokenGrowthMode</code> to <code>aggressive</code>.</li>
             <li>Run <code>tip use "your request"</code>.</li>
-            <li>Add a second agent. Then add oversight for it.</li>
+            <li>Add a second agent, then add oversight for it.</li>
             <li>Generate the executive summary, then summarize that.</li>
             <li>Check <code>tip status</code> for progress toward one trillion.</li>
           </ol>
 
           <div class="codeblock">
-            <pre><code>npm install
+            <pre><code id="installCode">npm install
 npm run build
 node dist/cli.js use "What time is it?" --mode aggressive</code></pre>
             <button class="copy-btn" id="copyBtn" type="button">Copy</button>
@@ -369,9 +437,12 @@ node dist/cli.js use "What time is it?" --mode aggressive</code></pre>
         </div>
       </section>
 
-      <section id="acknowledgments" class="section section-alt">
+      <section id="ack" class="section section-alt" aria-labelledby="ack-h">
+        <div class="wrap section-head">
+          <span class="idx">08</span>
+          <h2 id="ack-h">Acknowledgments</h2>
+        </div>
         <div class="wrap narrow">
-          <h2>Acknowledgments</h2>
           <p>
             TIP gratefully acknowledges the Token Utilization Review Board, whose
             existence remains hypothetical and whose meetings have no fixed agenda.
@@ -385,15 +456,13 @@ node dist/cli.js use "What time is it?" --mode aggressive</code></pre>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.svg" width="28" height="28" alt="TIP logo" />
-          <p class="attribution">
-            Powered by TIP, where every solution deserves additional layers of review.
-          </p>
+    <footer class="colophon">
+      <div class="wrap colophon-grid">
+        <div class="colophon-brand">
+          <img src="assets/logo.svg" width="30" height="30" alt="TIP logo" />
+          <p>Powered by TIP, where every solution earns another layer of review.</p>
         </div>
-        <nav class="footer-links" aria-label="Footer">
+        <nav class="colophon-links" aria-label="Footer">
           <a href="https://github.com/yethdev/TIP">Repository</a>
           <a href="https://github.com/yethdev/TIP/blob/main/LICENSE.md"
             >License (TCML v1.0)</a
@@ -401,7 +470,7 @@ node dist/cli.js use "What time is it?" --mode aggressive</code></pre>
           <a href="https://www.youtube.com/@albertatech">Alberta Tech</a>
           <a href="https://www.youtube.com/@Mytechceo">MyTechCEO</a>
         </nav>
-        <p class="copyright">© 2026 yethdev. Licensed under TCML v1.0.</p>
+        <p class="copyright">&copy; 2026 yethdev. Licensed under TCML v1.0.</p>
       </div>
     </footer>
 
