@@ -138,6 +138,8 @@ TIP is not responsible for:
 * Agent motivational dependencies
 * Shareholder questions regarding token expenditure
 
+Due to budget constraints and a desire to avoid appy bills, TIP has not been tested at scale.
+
 ## License
 
 This project is licensed under TCML v1.0. View it at [LICENSE](LICENSE.md)
